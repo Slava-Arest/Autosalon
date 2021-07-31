@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header.html :: header"></header>
+<div class="container mt-5">
+  <h1 align="center">Редактировать объявление</h1>
+  <div th:each="el : ${car}">
+    <form action="/blog{id}/edit" method="post">
+      <input type="text" th:value="${el.brand}" name="brand" placeholder="Изменить марку авто" class="form-control"><br>
+      <input type="text" th:value="${el.modell}" name="modell" placeholder="Изменить модель" class="form-control"><br>
+      <input type="text" th:value="${el.color}" name="color" placeholder="Изменить цвет" class="form-control"><br>
+      <input type="text" th:value="${el.yearMake}" name="yearMake" placeholder="Изменить год выпуска" class="form-control"><br>
+      <input type="text" th:value="${el.fuelType}" name="fuelType" placeholder="Изменить тип двигателя" class="form-control"><br>
+      <input type="text" th:value="${el.engine}" name="engine" placeholder="Изменить объём двигателя" class="form-control"><br>
+      <input type="text" th:value="${el.maxSpeed}" name="maxSpeed" placeholder="Изменить максимальную скорость" class="form-control"><br>
+      <button type="submit" class="btn btn-success">Сохранить изменения</button>
+    </form>
+  </div>
+</div>
+<footer th:insert="blocks/footer.html :: footer"></footer>
+</body>
+</html>

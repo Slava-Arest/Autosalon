@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header.html :: header"></header>
+<div class="container mt-5">
+<h1 align="center">Каталог автомобилей</h1>
+  <div th:each="el : ${cars}" class="alert alert-info mt-2">
+    <h3 th:text="${el.brand}"/>
+    <p th:text="${el.modell}"/>
+    <a th:href="'/blog' + ${el.id}" class="btn btn-warning">Детальнее</a>
+  </div>
+</div>
+<footer th:insert="blocks/footer.html :: footer"></footer>
+</body>
+</html>
