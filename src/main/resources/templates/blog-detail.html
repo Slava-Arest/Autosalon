@@ -9,9 +9,12 @@
 <div class="container mt-5">
   <div th:each="elem : ${car}" class="alert alert-info mt-2">
     <h3 th:text="${elem.brand}"/>
-    <p th:text="${elem.modell}"/>
-    <a th:href="'/blog' + ${elem.id} + '/edit'" class="btn btn-warning">Редактировать</a>
-    <a th:href="'/blog' + ${elem.id} + '/remove'" class="btn btn-warning">Удалить</a>
+    <h4 th:text="${elem.modell}"/>
+    <a th:text="${elem.color}"/>, <a th:text="${elem.yearMake}"/>, <a th:text="${elem.fuelType}"/>, <a th:text="${elem.engine}"/>, <a th:text="${elem.maxSpeed}"/><br>
+    <a th:href="'/blog/' + ${elem.id} + '/edit'" class="btn btn-warning">Редактировать</a><br><br>
+    <form th:action="'/blog/' + ${elem.id} + '/remove'" method="post">
+      <button class="btn btn-warning" type="submit">Удалить</button>
+    </form>
   </div>
 </div>
 <footer th:insert="blocks/footer.html :: footer"></footer>

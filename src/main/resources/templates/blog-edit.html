@@ -9,7 +9,7 @@
 <div class="container mt-5">
   <h1 align="center">Редактировать объявление</h1>
   <div th:each="el : ${car}">
-    <form action="/blog{id}/edit" method="post">
+    <form method="post">
       <input type="text" th:value="${el.brand}" name="brand" placeholder="Изменить марку авто" class="form-control"><br>
       <input type="text" th:value="${el.modell}" name="modell" placeholder="Изменить модель" class="form-control"><br>
       <input type="text" th:value="${el.color}" name="color" placeholder="Изменить цвет" class="form-control"><br>

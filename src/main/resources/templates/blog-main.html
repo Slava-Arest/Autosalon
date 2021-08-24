@@ -11,7 +11,7 @@
   <div th:each="el : ${cars}" class="alert alert-info mt-2">
     <h3 th:text="${el.brand}"/>
     <p th:text="${el.modell}"/>
-    <a th:href="'/blog' + ${el.id}" class="btn btn-warning">Детальнее</a>
+    <a th:href="'/blog/' + ${el.id}" class="btn btn-warning">Детальнее</a>
   </div>
 </div>
 <footer th:insert="blocks/footer.html :: footer"></footer>

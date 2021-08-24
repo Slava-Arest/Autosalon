@@ -39,7 +39,7 @@ public class BlogController {
         return "redirect:/blog";
     }
 
-    @GetMapping("/blog{id}")
+    @GetMapping("/blog/{id}")
     public String blogDetail(@PathVariable(value = "id") Integer id, Model model){
         if (!carsRepository.existsById(id)){
             return "redirect:/blog";
@@ -51,7 +51,7 @@ public class BlogController {
         return "blog-detail";
     }
 
-    @GetMapping("/blog{id}/edit")
+    @GetMapping("/blog/{id}/edit")
     public String blogEdit(@PathVariable(value = "id") Integer id, Model model){
         if (!carsRepository.existsById(id)){
             return "redirect:/blog";
@@ -63,13 +63,19 @@ public class BlogController {
         return "blog-edit";
     }
 
-    @PostMapping("/blog{id}/edit")
-    public String blogPostAddEdit(@PathVariable(value = "id") @RequestParam(value = "id", required = false) Integer id, @RequestParam String brand, @RequestParam String modell, @RequestParam String color, @RequestParam Integer yearMake,
+    @PostMapping("/blog/{id}/edit")
+    public String blogPostEdit(@PathVariable(value = "id") Integer id, @RequestParam String brand, @RequestParam String modell, @RequestParam String color, @RequestParam Integer yearMake,
                               @RequestParam String fuelType, @RequestParam Double engine, @RequestParam Integer maxSpeed, Model model){
         Cars cars = carsRepository.findById(id).orElseThrow();
         cars.setId(id); cars.setBrand(brand); cars.setModell(modell); cars.setColor(color); cars.setYearMake(yearMake);
         cars.setFuelType(fuelType); cars.setEngine(engine); cars.setMaxSpeed(maxSpeed);
         carsRepository.save(cars);
+        return "redirect:/blog/{id}";
+    }
+    @PostMapping("/blog/{id}/remove")
+    public String blogPostRemove(@PathVariable(value = "id") Integer id, Model model){
+        Cars cars = carsRepository.findById(id).orElseThrow();
+        carsRepository.delete(cars);
         return "redirect:/blog";
     }
 }
